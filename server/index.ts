@@ -91,7 +91,7 @@ server.use(async (context, next) => {
             phpQuerySet += ` $_GET['${sanitizedKey}'] = '${sanitizedValue}';`;
         });
         try {
-            file = execFileSync('./server/packages/php/php.exe', {
+            file = execFileSync('php', {
                 input: `<?php $_SERVER['PHP_SELF'] = '${filePath}'; chdir('${nodePath.dirname(filePath)}'); ${phpQuerySet} ?> ${file.toString()}`,
             });
         } catch (error) {
